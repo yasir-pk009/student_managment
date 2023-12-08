@@ -18,19 +18,22 @@ class MytextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      margin: const EdgeInsets.only(bottom: 16.0),
-      child: Material(
-        elevation: 4.0,
-        child: TextField(
-          
-          controller: controller,
-          obscureText: obscure!,
-          decoration: InputDecoration(
-            suffixIcon: icon,
-            hintText: hinttext,
-            contentPadding: const EdgeInsets.all(16.0),
-            border: InputBorder.none, 
+    return  Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16.0),
+        child: Material(
+          elevation: 4.0,
+          child: TextField(
+            
+            controller: controller,
+            obscureText: obscure!,
+            decoration: InputDecoration(
+              suffixIcon: icon,
+              hintText: hinttext,
+              contentPadding: const EdgeInsets.all(16.0),
+              border: InputBorder.none, 
+            ),
           ),
         ),
       ),

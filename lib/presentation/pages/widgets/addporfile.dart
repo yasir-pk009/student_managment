@@ -41,7 +41,7 @@ class _UploadProfilePictureWidgetState
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold)),
                     const SizedBox(
-                      width: 70,
+                      width: 60,
                     ),
                     GestureDetector(
                       onTap: () {

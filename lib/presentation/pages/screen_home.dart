@@ -72,39 +72,42 @@ class _ScreenHomeState extends State<ScreenHome> {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 20,
+              fontSize: 18,
             ),
           ),
         ),
         actions: [
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SearchView(),
-                    ),
-                  );
-                },
-                child: const Icon(Icons.search),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ScreenFilter(),
-                    ),
-                  );
-                },
-                child: const Icon(Icons.filter_list),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SearchView(),
+                      ),
+                    );
+                  },
+                  child: const Icon(Icons.search),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ScreenFilter(),
+                      ),
+                    );
+                  },
+                  child: const Icon(Icons.filter_list),
+                ),
+              ],
+            ),
           )
         ],
       ),
@@ -139,12 +142,13 @@ class _ScreenHomeState extends State<ScreenHome> {
       ),
     );
   }
-bool isNumeric(String s) {
-  if (s == null) {
-    return false;
+
+  bool isNumeric(String s) {
+    if (s == null) {
+      return false;
+    }
+    return double.tryParse(s) != null;
   }
-  return double.tryParse(s) != null;
-}
 
   void createNewStudent(BuildContext context) {
     showDialog(
@@ -182,13 +186,13 @@ bool isNumeric(String s) {
               const SizedBox(height: 10),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.deepPurple,
                 ),
                 onPressed: () {
                   handleAddProfilePic(context);
                 },
                 child: const Text(
-                  "Select Image From Camera",
+                  "Select Image ",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -218,20 +222,23 @@ bool isNumeric(String s) {
                             backgroundColor: Colors.red,
                           ),
                         );
-                return;
-
-                        
-
-                        
-                      }else if (!isNumeric(ageController.text)){
-                         ScaffoldMessenger.of(context).showSnackBar(
+                        return;
+                      } else if (!isNumeric(ageController.text)) {
+                        ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text("Enter a Valid Age"),
                             backgroundColor: Colors.red,
                           ),
                         );
                         return;
-
+                      } else if (nameController.text.isEmpty || ageController.text.isEmpty ){
+                         ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text("Please Enter Name"),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                        return;
                       }
                       StudentRepo.instance.addStudent(
                         nameController.text,
