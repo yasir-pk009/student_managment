@@ -72,7 +72,7 @@ class _ScreenHomeState extends State<ScreenHome> {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
         ),
@@ -121,7 +121,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                 final post = snapshot.data!.docs[index];
 
                 return Card(
-                  margin: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(16),
                   elevation: 4,
                   child: ListTile(
                     leading: CircleAvatar(
@@ -154,19 +154,18 @@ class _ScreenHomeState extends State<ScreenHome> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Text(
-            "Add Student",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-        ),
+       
         content: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              const Text(
+            "Add Student",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          SizedBox(height: 12,),
               TextField(
                 controller: nameController,
                 decoration: const InputDecoration(

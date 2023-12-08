@@ -38,6 +38,9 @@ class AuthRepo {
       Navigator.of(context).pop();
       // ignore: use_build_context_synchronously
       showErrorMessage(e.code, context);
+            // Navigator.of(context).pop();
+
+
     }
   }
 
